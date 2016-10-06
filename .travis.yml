@@ -6,6 +6,9 @@ php:
   - 7.0
 
 install:
+  - sudo npm cache clear --force
+  - sudo npm install -g n
+  - sudo n stable
   - npm install -g web-push-testing-service
 
 before_script:
