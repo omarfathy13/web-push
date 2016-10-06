@@ -25,7 +25,7 @@ class PushServiceTest extends PHPUnit_Framework_TestCase
     public static function setUpBeforeClass()
     {
         $testingServiceResult = exec(
-          "web-push-testing-service start phpunit -p".self::$portNumber,
+            getenv('NODE')." web-push-testing-service start phpunit -p".self::$portNumber,
         $output, $returnValue);
 
         if ($returnValue !== 0) {
@@ -174,7 +174,6 @@ class PushServiceTest extends PHPUnit_Framework_TestCase
 
     public static function tearDownAfterClass()
     {
-        $testingServiceResult = exec(
-          "web-push-testing-service stop phpunit");
+        $testingServiceResult = exec(getenv('NODE')." web-push-testing-service stop phpunit");
     }
 }

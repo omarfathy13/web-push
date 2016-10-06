@@ -6,9 +6,15 @@ php:
   - 7.0
 
 install:
-  - npm cache clear --force
-  - npm install -g n && n stable
-  - npm install -g web-push-testing-service
+  - $NPM install -g web-push-testing-service
+
+before_install:
+  - rm -rf ~/.nvm
+  - git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`)
+  - source ~/.nvm/nvm.sh
+  - nvm install stable
+  - export NODE=$(nvm which stable)
+  - export NPM=${NODE%node}npm
 
 before_script:
   - composer install --prefer-source -n --no-dev
