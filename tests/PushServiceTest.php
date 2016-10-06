@@ -29,7 +29,7 @@ class PushServiceTest extends PHPUnit_Framework_TestCase
         $output, $returnValue);
 
         if ($returnValue !== 0) {
-          echo $output;
+          print_r($output);
           throw new Exception('Unable to start web-push-testing-service');
         }
 
